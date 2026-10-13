@@ -15,7 +15,7 @@ const formularioInicial = {
 function Productos() {
    // Obtenemos los productos y la funcion para modificarlos
   // desde el contexto compartido de React.
-  const { productos, setProductos } = useInventario();
+  const { productos, setProductos, categorias } = useInventario();
 
   // Estados de busqueda y filtros.
   const [busqueda, setBusqueda] = useState("");
@@ -34,11 +34,6 @@ function Productos() {
   // Guarda el ID del producto pendiente de eliminacion.
   const [idProductoEliminando, setIdProductoEliminando] =
     useState<number | null>(null);
-
-  // Obtenemos las categorias sin repetir.
-  const categorias = [
-    ...new Set(productos.map((producto) => producto.categoria)),
-  ];
 
   // Obtenemos el producto que se quiere eliminar.
   const productoAEliminar = productos.find(
@@ -273,10 +268,11 @@ function Productos() {
           <option value="Todas">Todas las categorias</option>
 
           {categorias.map((categoria) => (
-            <option key={categoria} value={categoria}>
-              {categoria}
+            <option key={categoria.id} value={categoria.nombre}>
+            {categoria.nombre}
             </option>
           ))}
+
         </select>
       </div>
 
@@ -463,10 +459,11 @@ function Productos() {
                     <option value="">Seleccionar...</option>
 
                     {categorias.map((categoria) => (
-                      <option key={categoria} value={categoria}>
-                        {categoria}
+                      <option key={categoria.id} value={categoria.nombre}>
+                        {categoria.nombre}
                       </option>
                     ))}
+
                   </select>
                 </div>
 

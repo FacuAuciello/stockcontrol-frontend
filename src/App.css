@@ -658,3 +658,865 @@
   font-weight: 600;
 }
 
+/* =========================================
+   10. LAYOUT PROFESIONAL Y TEMAS
+   ========================================= */
+
+.aplicacion {
+  --fondo-app: #f7f8fa;
+  --fondo-panel: #ffffff;
+  --fondo-suave: #f9fafb;
+  --texto-principal: #20242c;
+  --texto-secundario: #6b7280;
+  --borde-color: #e5e7eb;
+  --primario: #6d42e8;
+  --primario-suave: #f0ebff;
+  --texto-primario: #ffffff;
+
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--fondo-app);
+  color: var(--texto-principal);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.aplicacion[data-theme="oscuro"] {
+  --fondo-app: #11151c;
+  --fondo-panel: #1b2029;
+  --fondo-suave: #242b36;
+  --texto-principal: #f1f3f7;
+  --texto-secundario: #a2aab8;
+  --borde-color: #343c49;
+  --primario: #a18aff;
+  --primario-suave: #332b50;
+  --texto-primario: #ffffff;
+
+  color-scheme: dark;
+}
+
+/* =========================================
+   11. MENU LATERAL
+   ========================================= */
+
+.aplicacion .menu-lateral {
+  width: 244px;
+  min-width: 244px;
+  min-height: 100vh;
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  background: var(--fondo-panel);
+  border-right: 1px solid var(--borde-color);
+  color: var(--texto-principal);
+}
+
+.marca-sistema {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 25px 12px 27px;
+}
+
+.marca-icono {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7448ed;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.aplicacion .nombre-sistema {
+  margin: 0;
+  padding: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--texto-principal);
+  line-height: 1.3;
+}
+
+.marca-descripcion {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+.seccion-menu-titulo {
+  padding: 10px 14px 11px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+  letter-spacing: 1px;
+}
+
+.titulo-futuro {
+  margin-top: 27px;
+}
+
+.aplicacion .navegacion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aplicacion .boton-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 13px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--texto-secundario);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.aplicacion button.boton-menu:hover:not(.activo) {
+  background-color: var(--fondo-suave);
+  color: var(--texto-principal);
+}
+
+.aplicacion .boton-menu.activo {
+  background: var(--primario-suave);
+  color: var(--primario);
+  font-weight: 600;
+}
+
+.aplicacion .menu-deshabilitado {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.icono-bloqueo {
+  margin-left: auto;
+}
+
+.menu-pie {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 20px 14px;
+  border-top: 1px solid var(--borde-color);
+  font-size: 11px;
+  color: var(--texto-secundario);
+}
+
+.indicador-demo {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+/* =========================================
+   12. AREA DE TRABAJO Y BARRA SUPERIOR
+   ========================================= */
+
+.area-trabajo {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.barra-superior {
+  min-height: 70px;
+  padding: 12px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--borde-color);
+  background-color: var(--fondo-panel);
+}
+
+.identidad-negocio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.avatar-negocio {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  flex-shrink: 0;
+  background-color: var(--primario-suave);
+  color: var(--primario);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.negocio-datos {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.negocio-datos strong {
+  color: var(--texto-principal);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.negocio-datos span {
+  color: var(--texto-secundario);
+  font-size: 11px;
+}
+
+.flecha-negocio {
+  margin-left: 8px;
+  color: var(--texto-secundario);
+}
+
+.barra-acciones {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.etiqueta-demo,
+.etiqueta-plan {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.etiqueta-demo {
+  color: var(--texto-secundario);
+  background-color: var(--fondo-suave);
+  border: 1px solid var(--borde-color);
+}
+
+.etiqueta-plan {
+  color: var(--primario);
+  background-color: var(--primario-suave);
+}
+
+.boton-tema {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--borde-color);
+  border-radius: 9px;
+  color: var(--texto-principal);
+  cursor: pointer;
+}
+
+.boton-tema:hover {
+  background-color: var(--fondo-suave);
+}
+
+.avatar-usuario {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #7448ed;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.aplicacion .contenido-principal {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  padding: 30px 32px;
+  background-color: var(--fondo-app);
+}
+
+.aplicacion .encabezado {
+  margin-bottom: 25px;
+}
+
+.aplicacion .encabezado h1 {
+  color: var(--texto-principal);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.aplicacion .encabezado p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+/* =========================================
+   13. PANELES, TABLAS Y FORMULARIOS
+   ========================================= */
+
+.aplicacion .panel,
+.aplicacion .tarjeta-estadistica {
+  background-color: var(--fondo-panel);
+  color: var(--texto-principal);
+  border: 1px solid var(--borde-color);
+  border-radius: 11px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.025);
+}
+
+.aplicacion .panel h2,
+.aplicacion .modal-contenido h2 {
+  color: var(--texto-principal);
+}
+
+.aplicacion .descripcion-panel,
+.aplicacion .texto-secundario,
+.aplicacion .texto-ayuda,
+.aplicacion .mensaje-stock,
+.aplicacion .pie-tabla {
+  color: var(--texto-secundario);
+}
+
+.aplicacion .tabla th {
+  background-color: var(--fondo-suave);
+  color: var(--texto-secundario);
+  border-bottom: 1px solid var(--borde-color);
+}
+
+.aplicacion .tabla td {
+  color: var(--texto-principal);
+  border-bottom: 1px solid var(--borde-color);
+}
+
+.aplicacion .tabla tbody tr:hover {
+  background-color: var(--fondo-suave);
+}
+
+.aplicacion .tabla-contenedor {
+  background-color: var(--fondo-panel);
+}
+
+.aplicacion .contador {
+  background-color: var(--fondo-suave);
+  color: var(--texto-secundario);
+  border: 1px solid var(--borde-color);
+}
+
+.aplicacion .campo-busqueda,
+.aplicacion .selector,
+.aplicacion .campo-formulario input,
+.aplicacion .campo-formulario select {
+  background-color: var(--fondo-panel);
+  color: var(--texto-principal);
+  border: 1px solid var(--borde-color);
+}
+
+.aplicacion input::placeholder {
+  color: var(--texto-secundario);
+}
+
+.aplicacion .campo-formulario label {
+  color: var(--texto-principal);
+}
+
+.aplicacion .campo-solo-lectura,
+.aplicacion .resumen-movimiento {
+  background-color: var(--fondo-suave);
+  color: var(--texto-principal);
+  border-color: var(--borde-color);
+}
+
+.aplicacion .resumen-fila strong {
+  color: var(--texto-principal);
+}
+
+.aplicacion .resumen-fila span {
+  color: var(--texto-secundario);
+}
+
+.aplicacion .modal-fondo {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.aplicacion .modal-contenido {
+  background-color: var(--fondo-panel);
+  color: var(--texto-principal);
+  border: 1px solid var(--borde-color);
+}
+
+.aplicacion .modal-encabezado p,
+.aplicacion .modal-mensaje p {
+  color: var(--texto-secundario);
+}
+
+.aplicacion .boton-cerrar {
+  color: var(--texto-secundario);
+}
+
+.aplicacion .boton-secundario,
+.aplicacion .boton-editar,
+.aplicacion .filtro-boton {
+  background-color: var(--fondo-panel);
+  color: var(--texto-principal);
+  border: 1px solid var(--borde-color);
+}
+
+.aplicacion .filtro-boton.seleccionado {
+  background-color: var(--primario-suave);
+  color: var(--primario);
+  border-color: var(--primario);
+}
+
+.aplicacion .boton-principal {
+  background-color: #7448ed;
+  color: #ffffff;
+}
+
+.aplicacion .boton-principal:hover {
+  background-color: #6135d7;
+}
+
+.aplicacion .estado,
+.aplicacion .tipo {
+  white-space: nowrap;
+}
+
+/* =========================================
+   14. PANTALLA ESTADISTICAS
+   ========================================= */
+
+.pagina-estadisticas {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.estadisticas-cuadricula {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tarjeta-estadistica {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px;
+}
+
+.estadistica-icono {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 19px;
+}
+
+.icono-productos {
+  background-color: #ede9fe;
+  color: #7042e8;
+}
+
+.icono-categorias {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.icono-alerta {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.icono-agotados {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.estadistica-etiqueta {
+  color: var(--texto-secundario);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.estadistica-numero {
+  margin: 8px 0;
+  color: var(--texto-principal);
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.estadistica-detalle {
+  color: var(--texto-secundario);
+  font-size: 11px;
+}
+
+.resumen-estadisticas {
+  display: flex;
+  flex-direction: column;
+  padding: 0 24px 18px;
+}
+
+.resumen-estadistica-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 0;
+  color: var(--texto-secundario);
+  border-bottom: 1px solid var(--borde-color);
+  font-size: 13px;
+}
+
+.resumen-estadistica-item:last-child {
+  border-bottom: none;
+}
+
+.resumen-estadistica-item strong {
+  margin-left: auto;
+  font-size: 16px;
+  color: var(--texto-principal);
+}
+
+.nota-estadisticas {
+  color: var(--texto-secundario);
+  font-size: 12px;
+}
+
+/* =========================================
+   15. ADAPTACION A PANTALLAS PEQUENAS
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .estadisticas-cuadricula {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .aplicacion {
+    flex-direction: column;
+  }
+
+  .aplicacion .menu-lateral {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 0 12px 12px;
+    border-right: none;
+    border-bottom: 1px solid var(--borde-color);
+  }
+
+  .marca-sistema {
+    padding: 16px 6px;
+  }
+
+  .aplicacion .navegacion {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .aplicacion .boton-menu {
+    width: auto;
+    padding: 10px 12px;
+  }
+
+  .seccion-menu-titulo,
+  .titulo-futuro,
+  .menu-pie,
+  .menu-deshabilitado {
+    display: none !important;
+  }
+
+  .barra-superior {
+    padding: 12px 16px;
+  }
+
+  .aplicacion .contenido-principal {
+    padding: 22px 16px;
+  }
+
+  .estadisticas-cuadricula {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .etiqueta-demo,
+  .flecha-negocio {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .estadisticas-cuadricula {
+    grid-template-columns: 1fr;
+  }
+
+  .negocio-datos span {
+    display: none;
+  }
+
+  .barra-acciones {
+    gap: 7px;
+  }
+
+  .etiqueta-plan {
+    padding: 6px 8px;
+  }
+
+  .aplicacion .boton-menu {
+    font-size: 12px;
+    gap: 7px;
+  }
+}
+
+/* =========================================
+   16. HERRAMIENTAS EXCEL / CSV
+   ========================================= */
+
+.titulo-herramientas {
+  margin-top: 25px;
+}
+
+.pagina-excel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.excel-introduccion {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 4px 0;
+  color: var(--primario);
+}
+
+.excel-introduccion h2 {
+  color: var(--texto-principal);
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.excel-introduccion p {
+  color: var(--texto-secundario);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.excel-cuadricula {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.excel-panel {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.excel-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  color: #14804a;
+  background: #dcfce7;
+}
+
+.excel-panel h3,
+.excel-informacion h3 {
+  font-size: 16px;
+  color: var(--texto-principal);
+}
+
+.excel-panel p,
+.excel-informacion p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--texto-secundario);
+}
+
+.excel-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.excel-acciones button,
+.excel-boton-archivo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.excel-boton-archivo {
+  position: relative;
+  padding: 10px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.excel-input-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.excel-mensaje {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 18px;
+  border: 1px solid;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.excel-exito {
+  background-color: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.excel-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+.excel-informacion {
+  padding: 23px 26px;
+}
+
+.excel-informacion h3 {
+  margin-bottom: 12px;
+}
+
+.excel-informacion p + p {
+  margin-top: 9px;
+}
+
+@media (max-width: 900px) {
+  .excel-cuadricula {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-herramientas {
+    display: none;
+  }
+}
+
+/* =========================================
+   17. IMPORTACION PERSONALIZADA
+   ========================================= */
+
+.excel-mapeo {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.excel-mapeo h3 {
+  font-size: 17px;
+  color: var(--texto-principal);
+}
+
+.excel-mapeo h4 {
+  font-size: 14px;
+  color: var(--texto-principal);
+}
+
+.excel-texto-secundario {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--texto-secundario);
+}
+
+.excel-texto-secundario strong {
+  color: var(--texto-principal);
+}
+
+.excel-tabla-columnas {
+  overflow-x: auto;
+}
+
+.excel-tabla-columnas .selector {
+  width: 100%;
+  max-width: 280px;
+}
+
+.excel-minimo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 17px;
+  border-radius: 9px;
+  border: 1px solid var(--borde-color);
+  background-color: var(--fondo-suave);
+}
+
+.excel-minimo label {
+  color: var(--texto-principal);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.excel-minimo input {
+  width: 120px;
+  padding: 10px 12px;
+  border: 1px solid var(--borde-color);
+  border-radius: 7px;
+  background-color: var(--fondo-panel);
+  color: var(--texto-principal);
+}
+
+.excel-minimo small {
+  color: var(--texto-secundario);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.excel-mapeo .tabla-contenedor {
+  max-height: 320px;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .excel-mapeo {
+    padding: 17px;
+  }
+}
+

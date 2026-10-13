@@ -1,28 +1,40 @@
 
+
 import { useInventario } from "../context/useInventario";
 
 function Inicio() {
-  // Obtenemos los datos compartidos del inventario.
   const { productos, movimientos } = useInventario();
 
-  // Productos que necesitan reposicion.
-  const productosConStockBajo = productos.filter(
+  // Productos agotados o que alcanzaron su minimo.
+  const productosParaReponer = productos.filter(
     (producto) => producto.stock <= producto.stockMinimo
   );
 
-  // Mostramos solamente los ultimos cinco movimientos.
+  // Priorizamos los agotados y despues los de bajo stock.
+  const productosOrdenados = [...productosParaReponer].sort(
+    (primero, segundo) => primero.stock - segundo.stock
+  );
+
+  // Mostramos los cinco movimientos mas recientes.
   const ultimosMovimientos = movimientos.slice(0, 5);
 
   return (
     <div className="pagina-inicio">
 
-      {/* Productos que necesitan reposicion */}
+      {/* Productos que requieren reposicion */}
       <section className="panel">
         <div className="panel-encabezado">
-          <h2>Productos para reponer</h2>
+          <div>
+            <h2>Productos para reponer</h2>
+
+            <p className="descripcion-panel">
+              Productos agotados o con stock igual o inferior
+              al minimo configurado.
+            </p>
+          </div>
 
           <span className="contador">
-            {productosConStockBajo.length} productos
+            {productosParaReponer.length} productos
           </span>
         </div>
 
@@ -30,19 +42,23 @@ function Inicio() {
           <table className="tabla">
             <thead>
               <tr>
+                <th>Codigo</th>
                 <th>Producto</th>
                 <th>Categoria</th>
                 <th>Stock actual</th>
+                <th>Stock minimo</th>
                 <th>Estado</th>
               </tr>
             </thead>
 
             <tbody>
-              {productosConStockBajo.map((producto) => (
+              {productosOrdenados.map((producto) => (
                 <tr key={producto.id}>
+                  <td>{producto.codigo}</td>
                   <td>{producto.nombre}</td>
                   <td>{producto.categoria}</td>
                   <td>{producto.stock}</td>
+                  <td>{producto.stockMinimo}</td>
 
                   <td>
                     <span
@@ -60,9 +76,9 @@ function Inicio() {
                 </tr>
               ))}
 
-              {productosConStockBajo.length === 0 && (
+              {productosOrdenados.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="tabla-vacia">
+                  <td colSpan={6} className="tabla-vacia">
                     No hay productos que necesiten reposicion.
                   </td>
                 </tr>
@@ -72,10 +88,16 @@ function Inicio() {
         </div>
       </section>
 
-      {/* Ultimos movimientos registrados */}
+      {/* Historial reciente */}
       <section className="panel">
         <div className="panel-encabezado">
-          <h2>Ultimos movimientos</h2>
+          <div>
+            <h2>Ultimos movimientos</h2>
+
+            <p className="descripcion-panel">
+              Actividad reciente de entradas y salidas.
+            </p>
+          </div>
         </div>
 
         <div className="tabla-contenedor">
@@ -110,8 +132,16 @@ function Inicio() {
                   </td>
 
                   <td>
-                    {movimiento.tipo === "ENTRADA" ? "+" : "-"}
-                    {movimiento.cantidad}
+                    <span
+                      className={
+                        movimiento.tipo === "ENTRADA"
+                          ? "cantidad-entrada"
+                          : "cantidad-salida"
+                      }
+                    >
+                      {movimiento.tipo === "ENTRADA" ? "+" : "-"}
+                      {movimiento.cantidad}
+                    </span>
                   </td>
                 </tr>
               ))}

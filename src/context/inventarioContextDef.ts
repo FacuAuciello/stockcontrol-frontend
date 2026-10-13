@@ -12,6 +12,12 @@ export interface Producto {
   stockMinimo: number;
 }
 
+// Estructura de una categoria.
+export interface Categoria {
+  id: number;
+  nombre: string;
+}
+
 // Tipos de movimientos permitidos.
 export type TipoMovimiento = "ENTRADA" | "SALIDA";
 
@@ -34,15 +40,21 @@ export interface NuevoMovimiento {
   motivo: string;
 }
 
-// Contrato del contexto de inventario.
+// Informacion y funciones compartidas.
 export interface InventarioContextType {
   productos: Producto[];
   setProductos: Dispatch<SetStateAction<Producto[]>>;
+
+  categorias: Categoria[];
+  crearCategoria: (nombre: string) => string | null;
+  editarCategoria: (id: number, nombre: string) => string | null;
+  eliminarCategoria: (id: number) => string | null;
+
   movimientos: Movimiento[];
   registrarMovimiento: (datos: NuevoMovimiento) => string | null;
 }
 
-// Creamos el contexto compartido.
+// Contexto compartido del inventario.
 export const InventarioContext = createContext<
   InventarioContextType | undefined
 >(undefined);
