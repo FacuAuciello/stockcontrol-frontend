@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# StockControl — Gestion de Productos y Stock
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+StockControl es una aplicacion frontend demostrativa para la gestion de productos e inventario de pequenos comercios.
 
-Currently, two official plugins are available:
+El proyecto utiliza una libreria ficticia como ejemplo y permite simular distintas operaciones de gestion de stock mediante una interfaz sencilla, moderna y responsive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias utilizadas
 
-## React Compiler
+- React
+- TypeScript
+- Vite
+- CSS
+- Context API de React
+- Git y GitHub
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades implementadas
 
-## Expanding the ESLint configuration
+**Inicio**
+- Visualizacion de productos con stock bajo o agotados.
+- Listado de los ultimos movimientos de mercaderia.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Productos**
+- Listado y busqueda de productos.
+- Filtros por categoria y estado del stock.
+- Alta de productos mediante formularios.
+- Edicion de productos existentes.
+- Eliminacion con confirmacion.
+- Validaciones de datos y codigos duplicados.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Movimientos**
+- Registro de entradas y salidas de mercaderia.
+- Actualizacion automatica del stock.
+- Validacion para evitar cantidades negativas o salidas superiores al stock disponible.
+- Historial de movimientos realizados.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Funcionamiento
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+La aplicacion utiliza datos ficticios y administra la informacion mediante el estado de React y Context API.
 
+No requiere backend ni base de datos. Los cambios funcionan durante la sesion, pero se reinician al recargar la pagina.
+
+## Ejecutar el proyecto
+
+Requisitos: Node.js y npm.
+
+1. Clonar el repositorio.
+2. Instalar las dependencias:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+3. Iniciar el servidor de desarrollo:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+4. Abrir la direccion local que muestra Vite.
+
+## Estado del proyecto
+
+En desarrollo.
+
+Proximas funcionalidades:
+- Gestion de categorias.
+- Pantalla de alertas de stock.
+- Mejoras visuales y responsive.
+
+## Objetivo
+
+Este proyecto forma parte de mi portfolio como desarrollador y busca demostrar una interfaz de gestion comercial que pueda adaptarse a las necesidades de distintos negocios.
+
+En una futura implementacion para clientes, el frontend podria integrarse con una API REST desarrollada con Java, Spring Boot y MySQL.

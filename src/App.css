@@ -1,0 +1,660 @@
+
+/* =========================================
+   1. ESTRUCTURA GENERAL
+   ========================================= */
+
+.aplicacion {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Menu lateral */
+.menu-lateral {
+  width: 230px;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 24px 16px;
+  flex-shrink: 0;
+}
+
+.nombre-sistema {
+  font-size: 20px;
+  font-weight: 700;
+  color: #202124;
+  margin-bottom: 40px;
+}
+
+/* Navegacion */
+.navegacion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.boton-menu {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #555e6b;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.boton-menu:hover {
+  background-color: #f3f4f6;
+}
+
+.boton-menu.activo {
+  background-color: #ede9fe;
+  color: #6d28d9;
+  font-weight: 600;
+}
+
+/* Contenido principal */
+.contenido-principal {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+}
+
+.encabezado {
+  margin-bottom: 30px;
+}
+
+.encabezado h1 {
+  font-size: 24px;
+  color: #202124;
+  margin-bottom: 6px;
+}
+
+.encabezado p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Pantallas que todavia no desarrollamos */
+.contenido-seccion {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.contenido-seccion h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contenido-seccion p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* =========================================
+   2. PANELES Y TABLAS
+   ========================================= */
+
+.pagina-inicio {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.panel {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.panel-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.panel-encabezado h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contador {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Tablas */
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.tabla th {
+  padding: 14px 24px;
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tabla td {
+  padding: 16px 24px;
+  border-top: 1px solid #f1f2f4;
+  white-space: nowrap;
+}
+
+.tabla tbody tr:hover {
+  background-color: #fafafa;
+}
+
+/* =========================================
+   3. ESTADOS DE STOCK
+   ========================================= */
+
+.estado,
+.tipo {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.estado.disponible,
+.tipo.entrada {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.estado.bajo {
+  background-color: #fff4df;
+  color: #a16207;
+}
+
+.estado.agotado {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.tipo.salida {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+/* =========================================
+   4. PANTALLA PRODUCTOS
+   ========================================= */
+
+.descripcion-panel {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Buscador y categorias */
+.barra-herramientas {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px 12px;
+  flex-wrap: wrap;
+}
+
+.campo-busqueda,
+.selector {
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 13px;
+  outline: none;
+}
+
+.campo-busqueda {
+  flex: 1;
+  min-width: 200px;
+}
+
+.selector {
+  min-width: 180px;
+}
+
+.campo-busqueda:focus,
+.selector:focus {
+  border-color: #8b5cf6;
+}
+
+/* Filtros de estado */
+.filtros-estado {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 20px;
+  flex-wrap: wrap;
+}
+
+.filtro-boton {
+  padding: 7px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #6b7280;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.filtro-boton:hover {
+  background-color: #f3f4f6;
+}
+
+.filtro-boton.seleccionado {
+  background-color: #202124;
+  border-color: #202124;
+  color: #ffffff;
+}
+
+/* Pie de tabla */
+.pie-tabla {
+  padding: 16px 24px;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.tabla-vacia {
+  text-align: center;
+  padding: 30px !important;
+  color: #6b7280;
+}
+
+/* =========================================
+   5. DISEÑO RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .aplicacion {
+    flex-direction: column;
+  }
+
+  .menu-lateral {
+    width: 100%;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .nombre-sistema {
+    margin-bottom: 16px;
+  }
+
+  .navegacion {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .boton-menu {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .contenido-principal {
+    padding: 20px 16px;
+  }
+
+  .panel-encabezado {
+    padding: 16px;
+  }
+
+  .tabla th,
+  .tabla td {
+    padding: 12px 16px;
+  }
+
+  .barra-herramientas {
+    padding: 16px;
+  }
+
+  .campo-busqueda,
+  .selector {
+    width: 100%;
+  }
+
+  .filtros-estado {
+    padding: 0 16px 16px;
+  }
+
+  .pie-tabla {
+    padding: 16px;
+  }
+}
+
+
+/* =========================================
+   6. BOTONES Y FORMULARIO MODAL
+   ========================================= */
+
+.boton-principal {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 7px;
+  background-color: #6d28d9;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boton-principal:hover {
+  background-color: #5b21b6;
+}
+
+.boton-secundario {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.boton-secundario:hover {
+  background-color: #f9fafb;
+}
+
+/* Fondo oscuro que cubre la pantalla */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: rgba(15, 23, 42, 0.45);
+}
+
+/* Ventana del formulario */
+.modal-contenido {
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.modal-encabezado {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 22px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-encabezado h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.modal-encabezado p {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.boton-cerrar {
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Distribucion de los campos */
+.modal-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.campo-completo {
+  grid-column: 1 / -1;
+}
+
+.campo-formulario label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.campo-formulario input,
+.campo-formulario select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: #202124;
+  font-size: 14px;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+  outline: 2px solid #ddd6fe;
+  border-color: #8b5cf6;
+}
+
+.error-formulario {
+  grid-column: 1 / -1;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+/* Botones inferiores */
+.modal-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 18px 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .modal-campos {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .modal-encabezado,
+  .modal-acciones {
+    padding: 16px;
+  }
+
+  .panel-encabezado {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================================
+   7. EDICION DE PRODUCTOS
+   ========================================= */
+
+/* Boton de edicion dentro de la tabla */
+.boton-editar {
+  padding: 7px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.boton-editar:hover {
+  background-color: #f3f4f6;
+}
+
+/* Campo informativo que no puede modificarse */
+.campo-solo-lectura {
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Aviso sobre la modificacion del stock */
+.mensaje-stock {
+  grid-column: 1 / -1;
+  padding: 10px 12px;
+  border-radius: 7px;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* =========================================
+   8. ELIMINACION DE PRODUCTOS
+   ========================================= */
+
+/* Agrupa los botones de acciones de la tabla */
+.acciones-producto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Boton para solicitar la eliminacion */
+.boton-eliminar {
+  padding: 7px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.boton-eliminar:hover {
+  background-color: #fef2f2;
+}
+
+/* Modal de confirmacion mas pequeño */
+.modal-confirmacion {
+  max-width: 420px;
+}
+
+/* Mensaje del modal de eliminacion */
+.modal-mensaje {
+  padding: 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.texto-secundario {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Boton para confirmar una accion destructiva */
+.boton-confirmar-eliminacion {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 7px;
+  background-color: #b91c1c;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boton-confirmar-eliminacion:hover {
+  background-color: #991b1b;
+}
+
+/* Explicacion debajo de los campos del formulario */
+.texto-ayuda {
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   9. MOVIMIENTOS DE STOCK
+   ========================================= */
+
+/* Separacion superior de los filtros */
+.filtros-movimientos {
+  padding-top: 20px;
+}
+
+/* Diferenciamos entradas y salidas de unidades */
+.cantidad-entrada {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.cantidad-salida {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+/* Resumen del stock dentro del formulario */
+.resumen-movimiento {
+  grid-column: 1 / -1;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+}
+
+/* Fila con valor anterior y resultante */
+.resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.resumen-fila + .resumen-fila {
+  margin-top: 12px;
+}
+
+.resumen-fila span {
+  color: #6b7280;
+}
+
+.resumen-fila strong {
+  color: #202124;
+  font-weight: 600;
+}
+
