@@ -1,74 +1,81 @@
-# StockControl — Gestion de Productos y Stock
+# StockControl — control de stock para pequeños comercios
 
-StockControl es una aplicacion frontend demostrativa para la gestion de productos e inventario de pequenos comercios.
+Aplicación para administrar el inventario de un comercio: productos, categorías, entradas y salidas de mercadería, indicadores y planillas de Excel y CSV. Los datos de ejemplo son los de una librería ficticia.
 
-El proyecto utiliza una libreria ficticia como ejemplo y permite simular distintas operaciones de gestion de stock mediante una interfaz sencilla, moderna y responsive.
+> **Estado del proyecto:** es una **demostración solo de frontend**. No tiene backend ni base de datos: los datos viven en el estado de React y **se reinician al recargar la página**. Lo único que se recuerda entre visitas es el modo claro u oscuro. La idea es que sirva de base para un sistema real (ver "Próximos pasos").
 
-## Tecnologias utilizadas
+![Pantalla de inicio](docs/inicio.png)
 
-- React
-- TypeScript
-- Vite
-- CSS
-- Context API de React
-- Git y GitHub
+## Capturas
 
-## Funcionalidades implementadas
+| Productos (búsqueda y filtros) | Movimientos de stock |
+|---|---|
+| ![Productos](docs/productos.png) | ![Movimientos](docs/movimientos.png) |
 
-**Inicio**
-- Visualizacion de productos con stock bajo o agotados.
-- Listado de los ultimos movimientos de mercaderia.
+| Categorías | Estadísticas |
+|---|---|
+| ![Categorías](docs/categorias.png) | ![Estadísticas](docs/estadisticas.png) |
 
-**Productos**
-- Listado y busqueda de productos.
-- Filtros por categoria y estado del stock.
-- Alta de productos mediante formularios.
-- Edicion de productos existentes.
-- Eliminacion con confirmacion.
-- Validaciones de datos y codigos duplicados.
+| Importar y exportar Excel y CSV | Modo oscuro |
+|---|---|
+| ![Importar y exportar](docs/importar-exportar.png) | ![Modo oscuro](docs/modo-oscuro.png) |
 
-**Movimientos**
-- Registro de entradas y salidas de mercaderia.
-- Actualizacion automatica del stock.
-- Validacion para evitar cantidades negativas o salidas superiores al stock disponible.
-- Historial de movimientos realizados.
+## Funcionalidades
 
-## Funcionamiento
+- **Inicio:** los productos agotados o con stock bajo (los que hay que reponer) y los últimos movimientos.
+- **Productos:** listado con búsqueda por nombre o código, filtro por categoría y por estado del stock (disponible, bajo stock y agotado). Alta y edición con formulario y baja con confirmación.
+- **Movimientos:** registro de entradas y salidas con motivo. El stock se actualiza solo y el historial guarda el stock resultante de cada operación.
+- **Categorías:** alta, edición y baja. Al renombrar una categoría se actualizan sus productos.
+- **Estadísticas:** productos registrados, categorías, productos con bajo stock y agotados, y un resumen de movimientos. Se actualizan solos al modificar los datos.
+- **Excel y CSV:** se importan productos desde un archivo `.xlsx` o `.csv` propio, relacionando sus columnas con los campos de StockControl antes de importar. También se descarga una plantilla de ejemplo y se exporta el inventario completo a CSV.
+- **Modo claro y oscuro,** que se recuerda en el navegador.
 
-La aplicacion utiliza datos ficticios y administra la informacion mediante el estado de React y Context API.
+## Reglas que valida
 
-No requiere backend ni base de datos. Los cambios funcionan durante la sesion, pero se reinician al recargar la pagina.
+- **Productos:** todos los campos son obligatorios, el precio tiene que ser mayor a cero, los stocks tienen que ser enteros y no negativos, y **no se permiten códigos duplicados**.
+- **Movimientos:** la cantidad tiene que ser un entero mayor a cero y **no se puede registrar una salida mayor al stock disponible**.
+- **Categorías:** no puede haber nombres repetidos y **no se puede eliminar una categoría que tiene productos**.
+- **Importación:** los productos nuevos se suman a los existentes sin reemplazarlos ni repetir códigos. Las categorías tienen que existir antes de importar, y si falta un código se genera solo.
 
-## Ejecutar el proyecto
+## Tecnologías
+
+| Parte | Qué se usa |
+|---|---|
+| Interfaz | React 19 y TypeScript, con Vite |
+| Estado | Context API de React (un solo proveedor para productos, categorías y movimientos) |
+| Estilos | CSS propio, sin librerías de componentes |
+| Íconos | `lucide-react` |
+| Planillas | `read-excel-file` para leer Excel; el CSV se lee y se genera a mano |
+
+## Cómo correrlo
 
 Requisitos: Node.js y npm.
 
-1. Clonar el repositorio.
-2. Instalar las dependencias:
-
 ```bash
 npm install
+npm run dev        # servidor de desarrollo
+npm run build      # chequeo de tipos y build de producción
+npm run lint       # ESLint
 ```
 
-3. Iniciar el servidor de desarrollo:
+## Estructura
 
-```bash
-npm run dev
+```
+src/
+  context/   Estado compartido del inventario (productos, categorías y movimientos) y sus reglas
+  data/      Datos de ejemplo de la librería
+  pages/     Una pantalla por sección: Inicio, Productos, Categorías, Movimientos, Estadísticas y Excel/CSV
+  App.tsx    Barra lateral, barra superior y cambio de sección (sin librería de rutas)
 ```
 
-4. Abrir la direccion local que muestra Vite.
+## Decisiones de diseño
 
-## Estado del proyecto
+- **Las reglas de negocio viven en el contexto, no en las pantallas.** Las funciones del contexto (por ejemplo, registrar un movimiento) validan y devuelven el mensaje de error, y las pantallas solo lo muestran. Así una regla está en un solo lugar.
+- **Después de crear un producto, su stock solo cambia a través de un movimiento.** Al editar un producto se conserva el stock actual, y cada entrada o salida actualiza el stock y queda registrada con el stock resultante.
+- **Sin router:** con seis secciones alcanza con guardar la sección actual en el estado.
 
-En desarrollo.
+## Próximos pasos
 
-Proximas funcionalidades:
-- Gestion de categorias.
-- Pantalla de alertas de stock.
-- Mejoras visuales y responsive.
-
-## Objetivo
-
-Este proyecto forma parte de mi portfolio como desarrollador y busca demostrar una interfaz de gestion comercial que pueda adaptarse a las necesidades de distintos negocios.
-
-En una futura implementacion para clientes, el frontend podria integrarse con una API REST desarrollada con Java, Spring Boot y MySQL.
+- **Persistencia:** hoy los datos se pierden al recargar. El paso natural es una API REST (por ejemplo, Java con Spring Boot y MySQL) que guarde el inventario. No está hecha.
+- **Proveedores y Reportes** figuran en el menú como "Próximamente".
+- **Tests automáticos** de las reglas del contexto.
